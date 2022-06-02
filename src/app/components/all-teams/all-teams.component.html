@@ -1,0 +1,115 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Search</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+
+                <form name="form" (ngSubmit)="searchForm.form.valid && search()" #searchForm="ngForm">
+
+                    <div class="form-group">
+                        <input type="search" class="form-control" name="searchh" [(ngModel)]="obj.team" #searchh="ngModel" [ngClass]="{ 'isinvalid': searchForm.submitted && searchh.invalid }" required minlength="3" maxlength="50" placeholder="search..." />
+                        <div *ngIf="searchForm.submitted && searchh.invalid" class="text-danger">
+                            <div *ngIf="searchh.errors.required"> required</div>
+                            <div *ngIf="searchh.errors.minlength">imput must have at least 3 carachters
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button class="btn btn-primary">search</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div> -->
+<!-- <div *ngFor="let m of matches ">
+
+    <app-result [X]="m"></app-result>
+
+
+</div> -->
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form [formGroup]="searchForm">
+                    <div class="form-group">
+                        <label>Search  Teams API </label>
+                        <input type="text" placeholder="teams" class="form-control" formControlName="ville" />
+                        <div *ngIf="(searchForm.controls['ville'].invalid) && (searchForm.controls['ville'].dirty || searchForm.controls['ville'].touched) ">
+                            <div *ngIf="searchForm.controls['ville'].errors.required" class="text-danger">
+                                last Name is required
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="Search" (click)="search()">
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+<!-- <div>
+
+    <div>Teams:<img [src]="path"></div>
+    <div class="text-danger">temperature:{{resultWeather.temp}}</div>
+    <div class="text-danger">pressure:{{resultWeather.pressure}}</div>
+    <div class="text-danger">Humidity:{{resultWeather.humidity}}</div>
+    <div class="text-danger">City:{{resultWeather.country}}</div>
+    <div class="text-danger">Wind:{{resultWeather.wind}}</div>
+</div> -->
+<!--  -->
+<div class="widget-next-match container" *ngIf="teams">
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>id Team</th>
+
+                <th>name</th>
+                <th>Code</th>
+                <th>logo</th>
+                <th>country </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- t: objet // teams: tableau d objet -->
+            <tr *ngFor="let p of pageOfItems">
+                <!-- variable {{}} -->
+                <td>{{p.team_id}}</td>
+
+                <td><strong class="text-white">{{p.name}}</strong></td>
+                <td>{{p.short_code}}</td>
+                <td><img src="{{p.logo}}" alt="Logo team"></td>
+                <td>{{p.country.name}}</td>
+            </tr>
+
+
+
+        </tbody>
+
+    </table>
+    <div class="text-danger">{{x}}</div>
+</div>
+<div class="card-footer pb-0 pt-3 container">
+    <jw-pagination [pageSize]="3" [items]="teams" (changePage)="onChangePage($event)"></jw-pagination>
+</div>

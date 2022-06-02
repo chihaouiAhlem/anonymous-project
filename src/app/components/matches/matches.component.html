@@ -1,0 +1,33 @@
+<app-banner y="matches"></app-banner>
+
+<!-- <div *ngIf="!isDisplayed">
+
+    <div *ngFor="let m of matches">
+
+
+        <app-result [X]="m"></app-result>
+
+
+    </div>
+    <div *ngIf="isDisplayed">
+        <app-result [X]="findedTeam"></app-result>
+
+
+    </div>
+
+
+</div> -->
+<div *ngIf="matches.length == 0" class="text-center" style="font-size: 40px;">Not founded matches</div>
+<div *ngFor="let m of matches  | customFilter:term ">
+    <app-result [X]="m"></app-result>
+</div>
+<div class="col-lg-6">
+    <form name="form">
+        <div class="form-group">
+            <label>Search by team (team one or team two) </label>
+            <input type="text" id="teamToSearch" class="form-control text-center " name="b" [(ngModel)]="term" />
+        </div>
+
+    </form>
+</div>
+{{term}}

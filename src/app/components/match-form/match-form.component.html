@@ -1,0 +1,60 @@
+<app-banner [y]="title"></app-banner>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <form name="form" (ngSubmit)="matchForm.form.valid && addOrEdit()" #matchForm="ngForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="team one" name="teamOne" [(ngModel)]="match.teamOne" #teamOne="ngModel" [ngClass]="{ 'is-invalid': matchForm.submitted &&
+                        teamOne.invalid }" required minlength="3" maxlength="20">
+
+                        <div *ngIf="matchForm.submitted && teamOne.invalid" class="invalidfeedback">
+                            <div *ngIf="teamOne.errors.required">team one is required
+                            </div>
+                            <div *ngIf="teamOne.errors.minlength">teamOne must be at least 3 characters</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="team two" name="teamTwo" [(ngModel)]="match.teamTwo" #teamTwo="ngModel" [ngClass]="{ 'is-invalid': matchForm.submitted &&
+                        teamTwo.invalid }" required minlength="3" maxlength="20">
+                        <div *ngIf="matchForm.submitted && teamTwo.invalid" class="invalidfeedback">
+                            <div *ngIf="teamTwo.errors.required">team two is required
+                            </div>
+                            <div *ngIf="teamTwo.errors.minlength">teamTwo must be at least 3 characters</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="score one" name="scoreOne" [(ngModel)]="match.scoreOne" #scoreOne="ngModel" [ngClass]="{ 'is-invalid': matchForm.submitted &&
+                        scoreOne.invalid }" required min="3" max="10">
+                        <div *ngIf="matchForm.submitted && scoreOne.invalid  " class="invalidfeedback">
+                            <div *ngIf="scoreOne.errors.required">scoreOne is required </div>
+                            <div *ngIf="scoreOne.errors.min">scoreOne more than 3 </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="score two" name="scoreTwo" [(ngModel)]="match.scoreTwo" #scoreTwo="ngModel" [ngClass]="{ 'is-invalid': matchForm.submitted &&
+                        scoreTwo.invalid }" required>
+                        <div *ngIf="matchForm.submitted && scoreTwo.invalid" class="invalidfeedback">
+                            <div *ngIf="scoreTwo.errors.required">scoreTwo is required
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary py-3 px-5" [value]="title">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

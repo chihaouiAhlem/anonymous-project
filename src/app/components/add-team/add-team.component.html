@@ -1,0 +1,33 @@
+<app-banner y="addTeam"></app-banner>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <form #teamForm="ngForm" (ngSubmit)="addTeam()">
+                    <!-- #teamForm="ngForm" c est l identifiant de form  TDf  -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder=" name" [(ngModel)]="team.name" name="a">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder=" owner" [(ngModel)]="team.owner" name="b">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="staduim" [(ngModel)]="team.staduim" name="c">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="fondation" [(ngModel)]="team.fondation" name="d">
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="Add Team">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+.red {
+    color: red;
+    font-size: 15px;
+}
+
+.green {
+    color: rgb(0, 255, 0);
+    font-size: 50px;
+}
+
+.blue {
+    color: rgb(136, 0, 255);
+    font-size: 30px;
+}

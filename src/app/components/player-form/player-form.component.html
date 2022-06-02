@@ -1,0 +1,66 @@
+<app-banner [y]="title"></app-banner>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+
+                <form name="form" (ngSubmit)="playerForms.form.valid && validate()" #playerForms="ngForm">
+                    <div class=" form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Name" [(ngModel)]="player.name" [ngClass]="{ 'isinvalid': playerForms.submitted && name.invalid }" required minlength="3" maxlength="50" />
+
+                        <div *ngIf=" playerForms.submitted && name.invalid" class="invalidfeedback">
+                            <div *ngIf="name.errors.required"> Name is required </div>
+                            <div *ngIf="name.errors.minlength">Name must be at least 3 characters</div>
+                            <div *ngIf="name.errors.maxlength">Name must be at more 25 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="nbr" [(ngModel)]="player.number" name="number" [ngClass]="{ 'is-invalid': playerForms.submitted &&
+                        number.invalid }" required min="5" max="25">
+                        <div *ngIf="playerForms.submitted && number.invalid" class="invalidfeedback">
+                            <div *ngIf="number.errors.required">Nbr is required</div>
+                            <div *ngIf="number.errors.min">Nbr must be at least 5</div>
+                            <div *ngIf="number.errors.max">Nbr must be at more 25 </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="age" [(ngModel)]="player.age" name="age" [ngClass]="{ 'is-invalid': playerForms.submitted &&
+                        age.invalid }" required min="10" max="25">
+                        <div *ngIf="playerForms.submitted && age.invalid" class="invalidfeedback">
+                            <div *ngIf="age.errors.required">Age is required</div>
+                            <div *ngIf="age.errors.min">Age must be at least 10</div>
+                            <div *ngIf="age.errors.max">Age must be at more 25 </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="position" [(ngModel)]="player.position" name="position" [ngClass]="{ 'is-invalid': playerForms.submitted &&
+                        position.invalid }" required max="25" min="1">
+                        <div *ngIf="playerForms.submitted && position.invalid" class="invalidfeedback">
+                            <div *ngIf="position.errors.required">Position is required</div>
+                            <div *ngIf="position.errors.min">Position must be at least 1</div>
+                            <div *ngIf="position.errors.max">Position must be at more 25 </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="form-group" style="visibility: hidden;">
+                        <input type="file" class="form-control" #filePicker (change)='onImageSelected($event)'>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary py-3 px-5" (click)="filePicker.click()">please select file</button>
+                    </div>
+                    <img [src]="imagePreview" alt="" width="200px">
+                    <!--  -->
+
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="ok">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

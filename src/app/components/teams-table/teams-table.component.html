@@ -1,0 +1,81 @@
+<div class="site-section container">
+    <div class="col-lg-12">
+
+        <div class="widget-next-match">
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>team_id</th>
+
+                        <th>Team Name</th>
+                        <th>owner</th>
+                        <th>Foundation</th>
+                        <th>studuim</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- t: objet // teams: tableau d objet -->
+                    <tr *ngFor="let t of pageOfItems">
+                        <!-- variable {{}} -->
+                        <td>{{t._id}}</td>
+                        <td>{{t.team_id}}</td>
+
+                        <td><strong class="text-white">{{t.name}}</strong></td>
+                        <td>{{t.owner}}</td>
+                        <td>{{t.fondation}}</td>
+                        <td>{{t.staduim}}</td>
+                        <td *ngIf="isDisplayed">
+                            <button class="btn btn-success ml-2" (click)="goToDisplay(t._id)">display</button><button class="btn btn-warning ml-2" (click)="goToEdit(t._id)">edit</button><button class="btn btn-danger ml-2" (click)="deletTeamById(t._id)">delete</button></td>
+
+                    </tr>
+
+
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <div>
+        <form name="form" (ngSubmit)="searchForm.form.valid && search(obj.staduim)" #searchForm="ngForm">
+
+            <div class="form-group">
+                <input type="search" class="form-control" name="staduim" [(ngModel)]="obj.staduim" #staduim="ngModel" [ngClass]="{ 'isinvalid': searchForm.submitted && staduim.invalid }" required minlength="3" maxlength="50" placeholder="search..." />
+                <div *ngIf="searchForm.submitted && staduim.invalid" class="text-danger">
+                    <div *ngIf="staduim.errors.required"> required</div>
+                    <div *ngIf="staduim.errors.minlength">imput must have at least 3 carachters
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button class="btn btn-primary">search post</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <form name="formm" (ngSubmit)="searcheForm.form.valid && searchByStaduim(obj.staduim)" #searcheForm="ngForm">
+
+            <div class="form-group">
+                <input type="search" class="form-control" name="staduimm" [(ngModel)]="obj.staduimm" #staduimm="ngModel" [ngClass]="{ 'isinvalid': searcheForm.submitted && staduimm.invalid }" required minlength="3" maxlength="50" placeholder="search..." />
+                <div *ngIf="searcheForm.submitted && staduimm.invalid" class="text-danger">
+                    <div *ngIf="staduimm.errors.required"> required</div>
+                    <div *ngIf="staduimm.errors.minlength">imput must have at least 3 carachters
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button class="btn btn-warning">search Get</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card-footer pb-0 pt-3 container">
+    <jw-pagination [pageSize]="2" [items]="teams" (changePage)="onChangePage($event)"></jw-pagination>
+</div>

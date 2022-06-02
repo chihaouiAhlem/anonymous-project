@@ -1,0 +1,25 @@
+<app-banner y="Player Info"></app-banner>
+
+
+<!-- lazem nlawjou 3al findplayer ili howa l player l 3ando id fil nvig -->
+<div class="latest-news">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 title-section">
+                <h2 class="heading">Name:{{findedPlayer.name}}</h2>
+            </div>
+        </div>
+        <div class="row no-gutters">
+
+            <div class="col-md-8">
+                <app-info-player [K]="findedPlayer"></app-info-player>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
